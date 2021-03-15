@@ -11,12 +11,10 @@ import com.codepath.apps.restclienttemplate.models.SampleModel;
 import com.codepath.apps.restclienttemplate.models.SampleModelDao;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 
-import android.util.Log;
-
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 
 	SampleModelDao sampleModelDao;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,7 +45,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
-		Log.i("testing", "login success");
+		Log.i("Login Activity", "login success");
 		Intent i = new Intent(this, TimelineActivity.class);
 		startActivity(i);
 	}

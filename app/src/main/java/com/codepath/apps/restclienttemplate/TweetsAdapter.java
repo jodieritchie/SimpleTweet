@@ -13,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
+public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
     Context context;
     List<Tweet> tweets;
@@ -34,13 +36,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-    // Bind values based on the position of the element
+    // Bind the values based on the position fo the element
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //Get the data at position
+        // Get the data at position
         Tweet tweet = tweets.get(position);
-
-        //Bind the tweet with view holder
+        // Bind the tweet with the viewholder
         holder.bind(tweet);
     }
 
@@ -49,17 +50,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
-    //Clean all elements of the recycler
-    public void clear(){
+    // Clean all elements of the recycler
+    public void clear() {
         tweets.clear();
         notifyDataSetChanged();
     }
 
-    //Add a list of items
-    public void addAll(List<Tweet> tweetList){
+    // Add a list of items
+    public void addAll(List<Tweet> tweetList) {
         tweets.addAll(tweetList);
         notifyDataSetChanged();
     }
+
 
     // Define a viewholder
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -78,7 +80,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
-            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
         }
     }
 }
